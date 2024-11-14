@@ -3,7 +3,7 @@ import 'colorize.dart';
 
 // ignore: avoid_classes_with_only_static_members
 /// Main static Fimber logging.
-class DSFimber {
+class Fimber {
   static final List<String> _muteLevels = [];
 
   /// Logs VERBOSE level [message]
@@ -12,7 +12,7 @@ class DSFimber {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     log("V", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
@@ -23,7 +23,7 @@ class DSFimber {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     log("D", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
@@ -34,7 +34,7 @@ class DSFimber {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     log("I", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
@@ -45,7 +45,7 @@ class DSFimber {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     log("W", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
@@ -56,7 +56,7 @@ class DSFimber {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     log("E", message, ex: ex, stacktrace: stacktrace, attributes: attributes);
   }
@@ -81,7 +81,7 @@ class DSFimber {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     if (_muteLevels.contains(level)) {
       return; // skip logging if muted.
@@ -236,7 +236,7 @@ class DebugTree extends LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     final logTag = tag ?? LogTree.getTag();
     final logLineBuilder = StringBuffer("$level\t$logTag:\t $message");
@@ -326,7 +326,7 @@ abstract class LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   });
 
   /// Gets levels of logging serviced by this [LogTree]
@@ -414,7 +414,7 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     _log(
       "V",
@@ -432,7 +432,7 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     _log(
       "D",
@@ -450,7 +450,7 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     _log(
       "I",
@@ -468,7 +468,7 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     _log(
       "W",
@@ -486,7 +486,7 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     _log(
       "E",
@@ -506,9 +506,9 @@ class FimberLog {
     String message, {
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
-    DSFimber.log(
+    Fimber.log(
       level,
       message,
       tag: tag,
@@ -648,7 +648,7 @@ class CustomFormatTree extends LogTree {
     String? tag,
     dynamic ex,
     StackTrace? stacktrace,
-    Map<String, Object?>? attributes,
+    Map<String, String?>? attributes,
   }) {
     LogLineInfo logTag;
     logTag = LogTree.getLogLineInfo();
